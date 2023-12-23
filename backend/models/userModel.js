@@ -22,6 +22,7 @@ const userSchema = mongoose.Schema(
     },
   },
   {
+    //   createdAt updatedAt field
     timestamps: true,
   }
 );

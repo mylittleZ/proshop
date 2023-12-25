@@ -14,6 +14,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+import CartScreen from './screens/CartScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       {/* This route is the index route (or default route) of its parent route. This implies that when the path of the parent route matches, this index route will be automatically rendered */}
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/product/:id" element={<ProductScreen />} />
+      <Route path='/cart' element={<CartScreen />} />
     </Route>
   )
 )

@@ -10,13 +10,14 @@ import {
     getUserById,
     updateUser,
 } from '../controllers/userController.js';
+import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 // base url is /api/users
 router.route('/').post(registerUser).get(getUsers);
 router.post('/logout', logoutUser);
 router.post('/login', authUser);
-router.route('/profile').get(getUserProfile).put(updateUserProfile);
+router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile);
 
 router.route('/:id').delete(deleteUser).get(getUserById).put(updateUser);
 

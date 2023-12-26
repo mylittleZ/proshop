@@ -13,6 +13,7 @@ const protect = asyncHandler(async (req, res, next) => {
         try {
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
             // exclude password field
+            // 把user的信息除了password都放到了req里，这样其他接口就可以直接从req里拿数据了
             req.user = await User.findById(decoded.userId).select('-password')
             next()
         } catch (error) {

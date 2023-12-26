@@ -13,7 +13,7 @@ import {
 import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
-// base url is /api/users
+// 实际定义接口路由的地方，base url is /api/users
 router.route('/').post(registerUser).get(protect, admin, getUsers);
 router.post('/logout', logoutUser);
 router.post('/login', authUser);

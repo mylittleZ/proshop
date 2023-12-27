@@ -101,7 +101,9 @@ const getMyOrders = asyncHandler(async (req, res) => {
 // @route   GET /api/orders
 // @access  Private/Admin
 const getOrders = asyncHandler(async (req, res) => {
-    res.send('get all orders');
+    // 查询 Order 集合中的所有订单，并对于每个订单，将其中的 user 字段替换为其关联的用户文档，但只包含用户的 id 和 name 字段
+    const orders = await Order.find({}).populate('user', 'id name');
+    res.status(200).json(orders)
 });
 
 export {

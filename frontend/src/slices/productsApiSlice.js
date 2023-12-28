@@ -7,6 +7,7 @@ export const productSlice = apiSlice.injectEndpoints({
             query: () => ({
                 url: PRODUCTS_URL,
             }),
+            providesTags: ['Products'],
             // 当数据不再被任何组件订阅后，缓存5s,来减少不必要的网络请求
             keepUnusedDataFor: 5,
         }),
@@ -23,7 +24,22 @@ export const productSlice = apiSlice.injectEndpoints({
             }),
             invalidatesTags: ['Product'],
         }),
+        updateProduct: builder.mutation({
+            query: (data) => ({
+                url: `${PRODUCTS_URL}/${data.productId}`,
+                method: 'PUT',
+                body: data,
+            }),
+            invalidatesTags: ['Products'],
+        }),
+        uploadProductImage: builder.mutation({
+            query: (data) => ({
+                url: `/api/upload`,
+                method: 'POST',
+                body: data,
+            }),
+        }),
     }),
 });
 
-export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation } = productSlice;
+export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation } = productSlice;

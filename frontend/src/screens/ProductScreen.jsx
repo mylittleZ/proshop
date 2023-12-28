@@ -11,6 +11,7 @@ import {
   Button,
   Form,
 } from "react-bootstrap";
+import Meta from "../components/Meta";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -80,6 +81,7 @@ const ProductScreen = () => {
             Go Back
           </Link>
           <Row>
+            <Meta title={product.name} description={product.description} />
             <Col md={5}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>

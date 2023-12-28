@@ -4,8 +4,11 @@ import { apiSlice } from './apiSlice';
 export const productSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: () => ({
+            query: ({ pageNumber }) => ({
                 url: PRODUCTS_URL,
+                params: {
+                    pageNumber
+                },
             }),
             providesTags: ['Products'],
             // 当数据不再被任何组件订阅后，缓存5s,来减少不必要的网络请求

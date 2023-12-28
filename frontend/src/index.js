@@ -36,7 +36,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       {/* This route is the index route (or default route) of its parent route. This implies that when the path of the parent route matches, this index route will be automatically rendered */}
       <Route index={true} path="/" element={<HomeScreen />} />
+      <Route path='/search/:keyword' element={<HomeScreen />} />
       <Route path='/page/:pageNumber' element={<HomeScreen />} />
+      <Route path='/search/:keyword/page/:pageNumber' element={<HomeScreen />} />
       <Route path="/product/:id" element={<ProductScreen />} />
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />

@@ -7,6 +7,7 @@ import { useLogoutMutation } from "../slices/userApiSlice";
 import { logout } from "../slices/authSlice";
 import SearchBox from "./SearchBox";
 import logo from "../assets/logo.png";
+import { resetCart } from '../slices/cartSlice';
 
 const Header = () => {
   // state.cart is the cart in store.js
@@ -17,11 +18,13 @@ const Header = () => {
   const navigate = useNavigate();
 
   const [logoutApiCall] = useLogoutMutation();
+
   const logoutHandler = async () => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate("/login");
+      dispatch(resetCart()); 
+      navigate('/login');
     } catch (err) {
       console.error(err);
     }
